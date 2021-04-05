@@ -21,18 +21,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-dl = load_model('dl_model')
+dl = load_model('mymodel')
 
 @app.post('/')
 async def dlmodel(request: Request):
     req = await request.json()
     numreq = np.array(req['digit'])
-    print(numreq.shape)
-    print(numreq.reshape(28,28,1).shape)
-    print(numreq.reshape(1,28,28,1).shape)
     # print(numreq.shape)
+    # print(numreq.reshape(28,28,1).shape)
+    print(numreq.shape)
+    print(numreq.reshape(1,28,28,1).shape)
     answer = dl.predict(numreq.reshape(1,28,28,1))
 
     print(answer)
-    return answer.tolist()
+    return answer.round(2).tolist()
     

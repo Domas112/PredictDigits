@@ -22,6 +22,8 @@ const doTheFetching = async (rects) => {
     ans[0].map((an,i)=>{
         results.innerHTML += `<p> ${i} - ${an} </p>  `
     })
+
+    
 }
 
 function setup(){
@@ -82,3 +84,4 @@ function draw(){
     })
 
 }
+
