@@ -27,8 +27,6 @@ dl = load_model('mymodel')
 async def dlmodel(request: Request):
     req = await request.json()
     numreq = np.array(req['digit'])
-    # print(numreq.shape)
-    # print(numreq.reshape(28,28,1).shape)
     print(numreq.shape)
     print(numreq.reshape(1,28,28,1).shape)
     answer = dl.predict(numreq.reshape(1,28,28,1))

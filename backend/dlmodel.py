@@ -76,53 +76,6 @@ model.fit(
 
 #%%
 
-# deep_model.add(Conv2D(32, kernel_size=(3, 3),
-#                  activation='relu',
-#                  input_shape=(28,28,1), padding='same')) 
-# deep_model.add(BatchNormalization())
-# deep_model.add(Dropout(0.3))
-# deep_model.add(Conv2D(32, kernel_size=(3, 3),
-#                  activation='relu', padding='same'))
-# deep_model.add(BatchNormalization())
-# deep_model.add(Dropout(0.3))
-# deep_model.add(Conv2D(32, kernel_size=(3, 3),
-#                  activation='relu', padding='same')) 
-# deep_model.add(BatchNormalization())
-# deep_model.add(Dropout(0.3))
-# deep_model.add(Conv2D(32, kernel_size=(3, 3),
-#                  activation='relu', padding='same')) 
-# deep_model.add(BatchNormalization())
-# deep_model.add(Dropout(0.3))
-# deep_model.add(Conv2D(64, kernel_size=(3, 3),
-#                  activation='relu', padding='same', strides=2)) 
-# deep_model.add(BatchNormalization())
-# deep_model.add(Dropout(0.3))
-# deep_model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
-# deep_model.add(BatchNormalization())
-# deep_model.add(Dropout(0.3))
-# deep_model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
-# deep_model.add(BatchNormalization())
-# deep_model.add(Dropout(0.3))
-# deep_model.add(Conv2D(64, (3, 3), activation='relu', padding='same'))
-# deep_model.add(BatchNormalization())
-# deep_model.add(Dropout(0.3))
-# deep_model.add(Conv2D(128, (3, 3), activation='relu', padding='same', strides=2))
-# deep_model.add(BatchNormalization())
-# deep_model.add(Dropout(0.3)) 
-# deep_model.add(Conv2D(128, (3, 3), activation='relu', padding='same'))
-# deep_model.add(BatchNormalization())
-# deep_model.add(Dropout(0.3))
-# deep_model.add(Conv2D(128, (3, 3), activation='relu', padding='same', strides=2))
-# deep_model.add(BatchNormalization())
-# deep_model.add(Dropout(0.3))
-# deep_model.add(Flatten()) # This line is to convert from matrices to vectors
-# deep_model.add(Dense(128, activation='relu'))
-# deep_model.add(Dropout(0.3))
-# deep_model.add(Dense(10, activation='softmax')) 
-
-
-#%%
-
 from keras.models import load_model
 
 dl = load_model('mymodel')
@@ -130,4 +83,3 @@ test = x_train[0].reshape(1,28,28,1)
 print(dl.predict(test))
 print(y_train[0])
 
-# %%
