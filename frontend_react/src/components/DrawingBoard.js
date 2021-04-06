@@ -62,9 +62,6 @@ export default class DrawingBoard extends React.Component{
 
             p.draw = () =>{
                 
-                this.setState(()=>{
-                    
-                })
                 
                 this.state.rects.forEach((el)=>{
                     
