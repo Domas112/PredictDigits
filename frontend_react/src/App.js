@@ -1,19 +1,20 @@
 import './App.css';
-import DrawingBoard from "./components/DrawingBoard"
 import CanvasDrawingBoard from './components/CanvasDrawingBoard';
 import React from 'react'
+import PredictionChart from './components/PredictionChart';
+import dummyData from './components/dummyData';
 
 class App extends React.Component {
     constructor(){
         super()
         this.state = {
-          digitPrediction:[],
+          digitPrediction: dummyData,
         }
     }
 
     doTheFetching = async (pixels) => {
         
-      let ans = await fetch('http://127.0.0.1:8000/test/',{
+      const fetchResult = await fetch('http://127.0.0.1:8000/',{
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json;charset=utf-8'
@@ -23,27 +24,26 @@ class App extends React.Component {
           .then(res=>res.json())
           .catch(err=>console.log(err))
 
-      this.setState({
-        digitPrediction: ans
-      })
-      console.log(this.state.digitPrediction[0]);
-  
+        const newDigitPrediction = this.state.digitPrediction.map((el, index)=>{
+          el.probability = fetchResult[0][index]
+          return el
+        })
+        
+        this.setState({
+          digitPrediction: newDigitPrediction
+        })
+
   }
 
+  
 
   render(){
     return (
       <div className="App">
-          <CanvasDrawingBoard digitPrediction={this.state.digitPrediction} doTheFetching={this.doTheFetching} />
-          <div>
-            <h2 className="results">
-              {
-                this.state.digitPrediction[0]?
-                this.state.digitPrediction[0].map((el, i)=>{
-                  return <p key={i}>---{i}:{el}---</p>
-                }):''
-              }
-            </h2>
+          
+          <CanvasDrawingBoard digitPrediction={this.state.digitPrediction} doTheFetching={this.doTheFetching} />          
+          <div className='App-child'>
+            <PredictionChart digitPrediction={this.state.digitPrediction}/>
           </div>
       </div>
     );

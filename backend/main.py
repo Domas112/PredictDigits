@@ -38,9 +38,8 @@ async def dlmodel(request: Request):
     #Predict
     answer = dl.predict(digit.reshape(1,28,28,1))
 
-    print(answer)
-    # return answer.round(2).tolist()
-    return answer.round(2).tolist()
+    print(answer.round(3))
+    return answer.tolist()
     
 
 @app.post('/test/')
@@ -50,9 +49,9 @@ async def test(request: Request):
     digit = digit.reshape(400,400,1)
     digit = smart_resize(digit,size=(28,28))
 
-    plt.figure()
-    plt.imshow(digit)
-    plt.show()
+    # plt.figure()
+    # plt.imshow(digit)
+    # plt.show()
 
     answer = dl.predict(digit.reshape(1,28,28,1))
 

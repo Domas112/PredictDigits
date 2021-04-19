@@ -63,15 +63,20 @@ export default class CanvasDrawingBoard extends React.Component{
 
     }
 
+    clearCanvas(){
+        this.contextRef.current.clearRect(0,0, this.canvasRef.current.width, this.canvasRef.current.height)
+    }
+
     render(){
         return(
-            <div>
+            <div className='canvas'>
                 <canvas
                     onMouseDown={this.startDrawing.bind(this)}
                     onMouseUp={this.finishDrawing.bind(this)}
                     onMouseMove={this.draw.bind(this)}
                     ref={this.canvasRef}
                 />
+                <button onClick={this.clearCanvas.bind(this)}>Clear</button>
             </div>
         )
     }
