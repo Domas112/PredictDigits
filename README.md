@@ -6,4 +6,4 @@ Backend:
   Keras
   
 Frontend:
-  P5.js
+  React
